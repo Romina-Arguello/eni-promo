@@ -1,0 +1,27 @@
+
+/* ========================================
+   ENI-PROMO — STYLES GLOBAUX
+   ======================================== */
+
+:root {
+    /* Couleurs principales */
+    --color-primary: #13528e;
+    --color-accent: #ffe15b;
+
+    /* Couleurs neutres */
+    --color-white: #ffffff;
+    --color-background: #f5f7fa;
+    --color-text: #1f2937;
+
+    /* Typographie */
+    --font-family-base: Arial, Helvetica, sans-serif;
+}
+
+/* Styles de base */
+
+body {
+    margin: 0;
+    font-family: var(--font-family-base);
+    color: var(--color-text);
+    background-color: var(--color-background);
+}

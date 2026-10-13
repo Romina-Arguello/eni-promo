@@ -1,0 +1,97 @@
+
+/* ========================================
+   PAGE D'ACCUEIL — HERO
+   ======================================== */
+
+.home-page {
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-primary);
+}
+
+.hero {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 2rem;
+    box-sizing: border-box;
+
+    background-color: var(--color-primary);
+    background-image: url("../images/hero-background.png");
+    background-repeat: no-repeat;
+    background-position: center 35%;
+    background-size: cover;
+}
+
+.hero__content {
+    max-width: 520px;
+    margin-left: clamp(0rem, 4vw, 4rem);
+}
+
+.hero__title {
+    color: var(--color-white);
+    font-size: clamp(2rem, 5vw, 4rem);
+    line-height: 1.1;
+}
+
+.hero__description {
+    color: var(--color-white);
+    font-size: 1.125rem;
+    line-height: 1.6;
+}
+
+.hero__button {
+    display: inline-block;
+    padding: 1rem 1.5rem;
+    margin-top: 1rem;
+
+    background-color: var(--color-accent);
+    color: var(--color-text);
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 0.5rem;
+}
+
+.hero__button:focus-visible {
+    outline: 3px solid var(--color-white);
+    outline-offset: 4px;
+}
+
+.home-page main {
+    display: flex;
+    flex: 1;
+}
+
+.home-page .hero {
+    flex: 1;
+}
+
+
+/* ========================================
+   PAGE D'ACCUEIL — VERSION MOBILE
+   ======================================== */
+
+@media (max-width: 1023px) {
+    .hero {
+        background-image: none;
+        justify-content: center;
+        padding: 2rem 1.5rem;
+    }
+
+    .hero__content {
+        width: 100%;
+        max-width: 520px;
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .hero__title {
+        font-size: clamp(2rem, 8vw, 3rem);
+    }
+
+    .hero__description {
+        font-size: 1rem;
+    }
+}
