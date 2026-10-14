@@ -72,6 +72,9 @@
 .home-page .hero {
     flex: 1;
 }
+.home-page .site-header__brand {
+    color: var(--color-white);
+}
 
 
 /* ========================================
@@ -102,5 +105,316 @@
 
     .home-page {
     background-image: none;
+    }
+}
+
+/* ========================================
+   PAGE DES APPRENANTS
+   ======================================== */
+.students-page {
+    background-color: var(--color-white);
+}
+
+.students-page main {
+    width: 100%;
+    max-width: 1200px;
+    margin-inline: auto;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+/* ========================================
+   PAGE DES APPRENANTS — INTRODUCTION
+   ======================================== */
+
+.students-page h1 {
+    color: var(--color-primary);
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    line-height: 1.2;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.students-page main > p {
+    color: var(--color-text);
+    font-size: 1.125rem;
+    line-height: 1.6;
+    margin-top: 0;
+}
+
+/* ========================================
+   PAGE DES APPRENANTS — RECHERCHE
+   ======================================== */
+
+.students-controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+.students-controls__search {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-width: 360px;
+}
+
+.students-controls__search label {
+    color: var(--color-text);
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.students-controls__search input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #9ca3af;
+    border-radius: 0;
+    background-color: var(--color-white);
+    color: var(--color-text);
+    font: inherit;
+}
+
+.students-controls__search input::placeholder {
+    color: var(--color-text);
+    opacity: 1;
+}
+
+.students-controls__search input:focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+/* ========================================
+   PAGE DES APPRENANTS — FILTRE PAR VILLE
+   ======================================== */
+
+.students-controls__city {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-width: 360px;
+}
+
+.students-controls__city label {
+    color: var(--color-text);
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.students-controls__city select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #9ca3af;
+    border-radius: 0;
+    background-color: var(--color-white);
+    color: var(--color-text);
+    font: inherit;
+    cursor: pointer;
+}
+
+.students-controls__city select:focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+/* ========================================
+   PAGE DES APPRENANTS — TRI ALPHABÉTIQUE
+   ======================================== */
+
+.students-controls__sort {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-width: 360px;
+}
+
+.students-controls__sort label {
+    color: var(--color-text);
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.students-controls__sort select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #9ca3af;
+    border-radius: 0;
+    background-color: var(--color-white);
+    color: var(--color-text);
+    font: inherit;
+    cursor: pointer;
+}
+
+.students-controls__sort select:focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+/* ========================================
+   PAGE DES APPRENANTS — MODE D'AFFICHAGE
+   ======================================== */
+
+.students-controls__view {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.students-controls__view legend {
+    margin-bottom: 0.5rem;
+    color: var(--color-text);
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.students-controls__view-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.students-controls__view-options label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--color-primary);
+    border-radius: 0;
+    background-color: var(--color-white);
+    color: var(--color-primary);
+    cursor: pointer;
+}
+
+.students-controls__view-options label:has(input:checked) {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.students-controls__view-options label:has(input:focus-visible) {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 3px;
+}
+
+.students-controls__view-options input {
+    accent-color: var(--color-accent);
+}
+
+/* ========================================
+   PAGE DES APPRENANTS — RÉSULTATS
+   ======================================== */
+
+.students-results {
+    margin-top: 2.5rem;
+}
+
+.students-results__container {
+    width: 100%;
+}
+
+.students-results__container--list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Couleur uniforme des textes dans les filtres */
+
+.students-controls__search input::placeholder,
+.students-controls__city select,
+.students-controls__sort select {
+    color: #6b7280;
+    opacity: 1;
+}
+
+/* ========================================
+   PAGE DES APPRENANTS — FICHE EN LISTE
+   ======================================== */
+
+.student-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1.5rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0;
+    background-color: var(--color-white);
+}
+
+.student-card__name {
+    margin: 0 0 0.5rem;
+    color: var(--color-primary);
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.student-card__city {
+    margin: 0;
+    color: #6b7280;
+    font-size: 0.95rem;
+}
+/* ========================================
+   PAGE DES APPRENANTS — BOUTON PROFIL
+   ======================================== */
+
+.student-card__button {
+    padding: 0.75rem 1.25rem;
+    border: 1px solid var(--color-primary);
+    border-radius: 0;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+            color 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+            border-color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.student-card__button:hover {
+    background-color: #eaf2f9;
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.student-card__button:focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .student-card__button {
+        transition: none;
+    }
+}
+
+/* ========================================
+   PAGE DES APPRENANTS — MODE CARTES
+   ======================================== */
+
+.students-results__container--grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+}
+
+.students-results__container--grid .student-card {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-between;
+}
+
+@media (max-width: 900px) {
+    .students-results__container--grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .students-results__container--grid {
+        grid-template-columns: 1fr;
     }
 }
