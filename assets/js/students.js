@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const card = document.createElement("article");
         card.className = "student-card";
         card.dataset.lastname = student.nom;
+        card.dataset.studentId = student.id;
 
         const content = document.createElement("div");
         content.className = "student-card__content";
