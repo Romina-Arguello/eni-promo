@@ -422,3 +422,99 @@
         grid-template-columns: 1fr;
     }
 }
+
+/* Fenêtre modale du profil */
+.student-modal {
+  width: min(90%, 520px);
+  max-height: 85vh;
+  padding: 2rem;
+  border: 1px solid #d1d5db;
+  background-color: var(--color-white);
+  color: var(--color-text);
+}
+
+.student-modal::backdrop {
+  background-color: rgb(0 0 0 / 60%);
+}
+
+.student-modal__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.student-modal__header h2 {
+  margin: 0;
+  color: var(--color-primary);
+}
+
+.student-modal__close {
+  padding: 0.25rem 0.5rem;
+  border: 0;
+  background: transparent;
+  color: var(--color-primary);
+  font-size: 1.75rem;
+  cursor: pointer;
+}
+
+.student-modal__close:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+.student-modal__content {
+  margin-top: 1.5rem;
+  line-height: 1.6;
+}
+
+/* ========================================
+   PAGE APPRENANTS — RESPONSIVE MOBILE
+   ======================================== */
+
+@media (max-width: 600px) {
+  .students-page main {
+    padding: 1.5rem 1rem;
+  }
+
+  /* Filtres */
+  .students-controls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .students-controls__search,
+  .students-controls__city,
+  .students-controls__sort {
+    width: 100%;
+    max-width: none;
+  }
+
+  .students-controls__search input,
+  .students-controls__city select,
+  .students-controls__sort select {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Fiches des apprenants */
+  .student-card {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+    padding: 1.25rem;
+  }
+
+  .student-card__button {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Fenêtre modale */
+  .student-modal {
+    box-sizing: border-box;
+    width: calc(100% - 2rem);
+    padding: 1.25rem;
+  }
+}
