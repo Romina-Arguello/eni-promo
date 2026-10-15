@@ -1,9 +1,9 @@
-
 document.addEventListener("DOMContentLoaded", () => {
   const studentsContainer = document.getElementById("students-container");
   const viewOptions = document.querySelectorAll('input[name="student-view"]');
   const searchInput = document.getElementById("student-search");
   const citySelect = document.getElementById("student-city");
+  const sortSelect = document.getElementById("student-sort");
 
   // Chargement des apprenants depuis le fichier JSON
   loadStudents()
@@ -14,13 +14,14 @@ document.addEventListener("DOMContentLoaded", () => {
       students.forEach((student) => {
         const card = document.createElement("article");
         card.className = "student-card";
+        card.dataset.lastname = student.nom;
 
         const content = document.createElement("div");
         content.className = "student-card__content";
 
         const name = document.createElement("h2");
         name.className = "student-card__name";
-        name.textContent = `${student.prenom} ${student.nom}`;
+        name.textContent = `${student.nom} ${student.prenom}`;
 
         const city = document.createElement("p");
         city.className = "student-card__city";
@@ -60,9 +61,9 @@ document.addEventListener("DOMContentLoaded", () => {
             .querySelector(".student-card__name")
             .textContent.toLowerCase();
 
-          const studentCity = card
-            .querySelector(".student-card__city")
-            .textContent;
+          const studentCity = card.querySelector(
+            ".student-card__city",
+          ).textContent;
 
           const matchesName = studentName.includes(searchTerm);
           const matchesCity =
@@ -75,7 +76,28 @@ document.addEventListener("DOMContentLoaded", () => {
       // Événements des filtres
       searchInput.addEventListener("input", filterStudents);
       citySelect.addEventListener("change", filterStudents);
+
+      function sortStudents() {
+        const direction = sortSelect.value;
+
+        const cards = [...studentsContainer.querySelectorAll(".student-card")];
+
+        cards.sort((cardA, cardB) => {
+          const nameA = cardA.dataset.lastname;
+          const nameB = cardB.dataset.lastname;
+
+          return direction === "asc"
+            ? nameA.localeCompare(nameB, "fr")
+            : nameB.localeCompare(nameA, "fr");
+        });
+
+        studentsContainer.append(...cards);
+      }
+
+      sortSelect.addEventListener("change", sortStudents);
+      sortStudents();
     })
+
     .catch((error) => {
       studentsContainer.textContent =
         "Une erreur est survenue lors du chargement des apprenants.";
@@ -90,11 +112,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
       studentsContainer.classList.remove(
         "students-results__container--list",
-        "students-results__container--grid"
+        "students-results__container--grid",
       );
 
       studentsContainer.classList.add(
-        `students-results__container--${option.value}`
+        `students-results__container--${option.value}`,
       );
     });
   });
