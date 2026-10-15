@@ -518,3 +518,42 @@
     padding: 1.25rem;
   }
 }
+
+/* ========================================
+   PAGE CARTE DES APPRENANTS
+   ======================================== */
+
+.map-page {
+  background-color: var(--color-white);
+}
+
+.map-page main {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.map-page h1 {
+  color: var(--color-primary);
+  font-size: clamp(2rem, 4vw, 2.75rem);
+}
+
+.students-map {
+  width: 100%;
+  height: 550px;
+  margin-top: 2rem;
+  border: 1px solid #d1d5db;
+}
+
+@media (max-width: 600px) {
+  .map-page main {
+    padding: 1.5rem 1rem;
+  }
+
+  .students-map {
+    height: 65vh;
+    min-height: 350px;
+  }
+}
