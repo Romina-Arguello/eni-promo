@@ -344,6 +344,10 @@
     background-color: var(--color-white);
 }
 
+.student-card[hidden] {
+  display: none;
+}
+
 .student-card__name {
     margin: 0 0 0.5rem;
     color: var(--color-primary);

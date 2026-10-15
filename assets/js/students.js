@@ -31,6 +31,20 @@ document.addEventListener("DOMContentLoaded", () => {
       card.append(content, button);
       studentsContainer.append(card);
     });
+
+        searchInput.addEventListener("input", () => {
+      const searchTerm = searchInput.value.trim().toLowerCase();
+
+      const cards = studentsContainer.querySelectorAll(".student-card");
+
+      cards.forEach((card) => {
+        const studentName = card
+          .querySelector(".student-card__name")
+          .textContent.toLowerCase();
+
+        card.hidden = !studentName.includes(searchTerm);
+      });
+    });
   })
   .catch((error) => {
     studentsContainer.textContent =
