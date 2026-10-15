@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Découvrez la répartition géographique des apprenants ENI-Promo.">
+
+    <title>Carte des apprenants | ENI-Promo</title>
+
+    <!-- Styles du projet -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/pages.css">
+
+    <!-- Styles Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head>
+
+<body class="map-page">
+
+    <header class="site-header">
+        <a href="index.html" class="site-header__brand">
+            <img src="assets/images/logo-eni.png" alt="" class="site-header__logo">
+            <span>ENI-Promo</span>
+        </a>
+
+        <nav class="site-nav" aria-label="Navigation principale">
+            <ul class="site-nav__list">
+                <li><a href="students.html">Apprenants</a></li>
+                <li><a href="preferences.html">Préférences</a></li>
+                <li><a href="map.html" aria-current="page">Carte</a></li>
+                <li><a href="information.html">Informations</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <nav class="breadcrumb" aria-label="Fil d'Ariane">
+            <ol class="breadcrumb__list">
+                <li class="breadcrumb__item">
+                    <a href="index.html">Accueil</a>
+                </li>
+                <li class="breadcrumb__item" aria-current="page">
+                    Carte
+                </li>
+            </ol>
+        </nav>
+
+        <h1>Carte des apprenants</h1>
+        <p>Découvrez la répartition géographique de notre promotion.</p>
+
+        <section aria-label="Localisation des apprenants">
+            <div id="students-map" class="students-map" aria-label="Carte interactive des villes des apprenants"></div>
+        </section>
+    </main>
+
+    <!-- Bibliothèque Leaflet -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="" defer></script>
+
+    <!-- Scripts du projet -->
+    <script src="assets/js/data.js" defer></script>
+    <script src="assets/js/map.js" defer></script>
+
+</body>
+
+</html>
