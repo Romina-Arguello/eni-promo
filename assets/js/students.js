@@ -1,69 +1,101 @@
+
 document.addEventListener("DOMContentLoaded", () => {
   const studentsContainer = document.getElementById("students-container");
   const viewOptions = document.querySelectorAll('input[name="student-view"]');
   const searchInput = document.getElementById("student-search");
+  const citySelect = document.getElementById("student-city");
 
- loadStudents()
-  .then((students) => {
-    studentsContainer.replaceChildren();
+  // Chargement des apprenants depuis le fichier JSON
+  loadStudents()
+    .then((students) => {
+      studentsContainer.replaceChildren();
 
-    students.forEach((student) => {
-      const card = document.createElement("article");
-      card.className = "student-card";
+      // Création dynamique des fiches
+      students.forEach((student) => {
+        const card = document.createElement("article");
+        card.className = "student-card";
 
-      const content = document.createElement("div");
-      content.className = "student-card__content";
+        const content = document.createElement("div");
+        content.className = "student-card__content";
 
-      const name = document.createElement("h2");
-      name.className = "student-card__name";
-      name.textContent = `${student.prenom} ${student.nom}`;
+        const name = document.createElement("h2");
+        name.className = "student-card__name";
+        name.textContent = `${student.prenom} ${student.nom}`;
 
-      const city = document.createElement("p");
-      city.className = "student-card__city";
-      city.textContent = student.ville;
+        const city = document.createElement("p");
+        city.className = "student-card__city";
+        city.textContent = student.ville;
 
-      const button = document.createElement("button");
-      button.type = "button";
-      button.className = "student-card__button";
-      button.textContent = "Voir le profil";
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "student-card__button";
+        button.textContent = "Voir le profil";
 
-      content.append(name, city);
-      card.append(content, button);
-      studentsContainer.append(card);
-    });
-
-        searchInput.addEventListener("input", () => {
-      const searchTerm = searchInput.value.trim().toLowerCase();
-
-      const cards = studentsContainer.querySelectorAll(".student-card");
-
-      cards.forEach((card) => {
-        const studentName = card
-          .querySelector(".student-card__name")
-          .textContent.toLowerCase();
-
-        card.hidden = !studentName.includes(searchTerm);
+        content.append(name, city);
+        card.append(content, button);
+        studentsContainer.append(card);
       });
+
+      // Création automatique du filtre par ville
+      const cities = [
+        ...new Set(students.map((student) => student.ville)),
+      ].sort((a, b) => a.localeCompare(b, "fr"));
+
+      cities.forEach((city) => {
+        const option = document.createElement("option");
+        option.value = city;
+        option.textContent = city;
+        citySelect.append(option);
+      });
+
+      // Recherche dynamique et filtrage par ville
+      function filterStudents() {
+        const searchTerm = searchInput.value.trim().toLowerCase();
+        const selectedCity = citySelect.value;
+
+        const cards = studentsContainer.querySelectorAll(".student-card");
+
+        cards.forEach((card) => {
+          const studentName = card
+            .querySelector(".student-card__name")
+            .textContent.toLowerCase();
+
+          const studentCity = card
+            .querySelector(".student-card__city")
+            .textContent;
+
+          const matchesName = studentName.includes(searchTerm);
+          const matchesCity =
+            selectedCity === "" || studentCity === selectedCity;
+
+          card.hidden = !(matchesName && matchesCity);
+        });
+      }
+
+      // Événements des filtres
+      searchInput.addEventListener("input", filterStudents);
+      citySelect.addEventListener("change", filterStudents);
+    })
+    .catch((error) => {
+      studentsContainer.textContent =
+        "Une erreur est survenue lors du chargement des apprenants.";
+
+      console.error(error);
     });
-  })
-  .catch((error) => {
-    studentsContainer.textContent =
-      "Une erreur est survenue lors du chargement des apprenants.";
-    console.error(error);
-  });
+
+  // Changement du mode d'affichage : Liste / Cartes
   viewOptions.forEach((option) => {
     option.addEventListener("change", () => {
       if (!option.checked) return;
 
       studentsContainer.classList.remove(
         "students-results__container--list",
-        "students-results__container--grid",
+        "students-results__container--grid"
       );
 
       studentsContainer.classList.add(
-        `students-results__container--${option.value}`,
+        `students-results__container--${option.value}`
       );
     });
   });
 });
-
