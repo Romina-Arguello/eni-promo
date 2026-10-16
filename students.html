@@ -55,29 +55,41 @@
         </nav>
         <h1>Les apprenants</h1>
         <p>Découvrez les membres de notre promotion.</p>
+
+
         <section class="students-controls" aria-label="Recherche et filtres des apprenants">
             <div class="students-controls__search">
                 <label for="student-search">Rechercher un apprenant</label>
                 <input type="search" id="student-search" name="student-search" placeholder="Nom ou prénom"
                     autocomplete="off">
             </div>
-            <div class="students-controls__city">
-                <label for="student-city">Filtrer par ville</label>
 
-                <select id="student-city" name="student-city">
-                    <option value="">Toutes les villes</option>
-                </select>
-            </div>
-            <div class="students-controls__sort">
-                <label for="student-sort">Trier par nom</label>
+            <div class="students-controls__filters">
+                <div class="students-controls__city">
+                    <label for="student-city">Filtrer par ville</label>
+                    <select id="student-city" name="student-city">
+                        <option value="">Toutes les villes</option>
+                    </select>
+                </div>
 
-                <select id="student-sort" name="student-sort">
-                    <option value="asc">De A à Z</option>
-                    <option value="desc">De Z à A</option>
-                </select>
+                <div class="students-controls__sort">
+                    <label for="student-sort">Trier par nom</label>
+                    <select id="student-sort" name="student-sort">
+                        <option value="asc">De A à Z</option>
+                        <option value="desc">De Z à A</option>
+                    </select>
+                </div>
             </div>
+        </section>
+
+        <div class="students-toolbar">
+            <p id="students-count" class="students-toolbar__count" role="status">
+                Chargement des apprenants…
+            </p>
+
             <fieldset class="students-controls__view">
                 <legend>Mode d'affichage</legend>
+
                 <div class="students-controls__view-options">
                     <label>
                         <input type="radio" name="student-view" value="list" checked>
@@ -90,7 +102,8 @@
                     </label>
                 </div>
             </fieldset>
-        </section>
+        </div>
+
 
         <section class="students-results" aria-label="Résultats de la recherche des apprenants">
             <div id="students-container" class="students-results__container students-results__container--list">

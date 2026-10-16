@@ -1,4 +1,3 @@
-
 /* ========================================
    PAGE D'ACCUEIL — HERO
    ======================================== */
@@ -148,16 +147,60 @@
 
 .students-controls {
     display: flex;
-    flex-wrap: wrap;
-    align-items: flex-end;
+    flex-direction: column;
     gap: 1.5rem;
     margin-top: 2rem;
+    padding: 1.5rem;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    background-color: var(--color-white);
+}
+
+/* Ville et tri sur une même ligne */
+.students-controls__filters {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+}
+
+/* Compteur et sélection du mode d'affichage */
+.students-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+    padding: 1rem 1.5rem;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    background-color: var(--color-background);
+}
+.students-toolbar .students-controls__view {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.students-toolbar .students-controls__view legend {
+    float: left;
+    width: auto;
+    margin: 0 1rem 0 0;
+    padding: 0;
+}
+
+.students-toolbar__count {
+    margin: 0;
+    color: var(--color-text);
+    font-weight: 600;
 }
 .students-controls__search {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    max-width: 360px;
+    width: 100%;
+    max-width: none;
+    min-width: 0;
 }
 
 .students-controls__search label {
@@ -174,6 +217,7 @@
     background-color: var(--color-white);
     color: var(--color-text);
     font: inherit;
+    box-sizing: border-box;
 }
 
 .students-controls__search input::placeholder {
@@ -194,7 +238,9 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    max-width: 360px;
+    width: 100%;
+    max-width: none;
+    min-width: 0;
 }
 
 .students-controls__city label {
@@ -212,6 +258,7 @@
     color: var(--color-text);
     font: inherit;
     cursor: pointer;
+    box-sizing: border-box;
 }
 
 .students-controls__city select:focus-visible {
@@ -227,7 +274,9 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    max-width: 360px;
+    width: 100%;
+    max-width: none;
+    min-width: 0;
 }
 
 .students-controls__sort label {
@@ -245,6 +294,7 @@
     color: var(--color-text);
     font: inherit;
     cursor: pointer;
+    box-sizing: border-box;
 }
 
 .students-controls__sort select:focus-visible {
@@ -475,13 +525,40 @@
 @media (max-width: 600px) {
   .students-page main {
     padding: 1.5rem 1rem;
+        /* Barre de résultats et mode d'affichage */
+
+    .students-toolbar {
+        padding: 1rem;
+    }
+
+    .students-toolbar .students-controls__view {
+        flex-wrap: wrap;
+    }
+
+    .students-toolbar .students-controls__view legend {
+        float: none;
+        margin-bottom: 0.5rem;
+    }
   }
 
   /* Filtres */
   .students-controls {
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .students-controls__filters {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .students-toolbar {
     flex-direction: column;
     align-items: stretch;
-    gap: 1rem;
+  }
+
+  .students-toolbar__count {
+    text-align: left;
   }
 
   .students-controls__search,
