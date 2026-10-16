@@ -17,6 +17,20 @@
     --font-family-base: Arial, Helvetica, sans-serif;
 }
 
+
+/* ========================================
+   THÈME SOMBRE
+   ======================================== */
+
+:root[data-theme="dark"] {
+    --color-primary: #93c5fd;
+    --color-accent: #ffe15b;
+    --color-white: #1e293b;
+    --color-background: #0f172a;
+    --color-text: #f1f5f9;
+}
+
+
 /* Styles de base */
 
 body {

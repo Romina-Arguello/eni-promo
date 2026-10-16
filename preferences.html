@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Personnalisez vos préférences d'affichage sur ENI-Promo.">
+    <title>Préférences | ENI-Promo</title>
+    <script src="assets/js/theme.js"></script>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/pages.css">
+</head>
+
+<body class="preferences-page">
+    <header class="site-header">
+        <a href="index.html" class="site-header__brand">
+            <img src="assets/images/logo-eni.png" alt="" class="site-header__logo">
+            <span>ENI-Promo</span>
+        </a>
+
+        <nav class="site-nav" aria-label="Navigation principale">
+            <ul class="site-nav__list">
+                <li><a href="students.html">Apprenants</a></li>
+                <li><a href="preferences.html" aria-current="page">Préférences</a></li>
+                <li><a href="map.html">Carte</a></li>
+                <li><a href="information.html">Informations</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <nav class="breadcrumb" aria-label="Fil d'Ariane">
+            <ol class="breadcrumb__list">
+                <li class="breadcrumb__item">
+                    <a href="index.html">Accueil</a>
+                </li>
+                <li class="breadcrumb__item">
+                    <a href="students.html">Apprenants</a>
+                </li>
+                <li class="breadcrumb__item" aria-current="page">
+                    Préférences
+                </li>
+            </ol>
+        </nav>
+
+        <h1>Préférences</h1>
+        <p>Personnalisez l'apparence et l'affichage de votre annuaire.</p>
+
+        <form id="preferences-form">
+            <fieldset>
+                <legend>Thème du site</legend>
+
+                <label>
+                    <input type="radio" name="theme" value="light" checked>
+                    Clair
+                </label>
+
+                <label>
+                    <input type="radio" name="theme" value="dark">
+                    Sombre
+                </label>
+            </fieldset>
+
+            <fieldset>
+                <legend>Affichage des apprenants</legend>
+
+                <label>
+                    <input type="radio" name="view" value="list" checked>
+                    Liste
+                </label>
+
+                <label>
+                    <input type="radio" name="view" value="grid">
+                    Cartes
+                </label>
+            </fieldset>
+
+            <button type="submit">Enregistrer les préférences</button>
+
+            <p id="preferences-feedback" role="status" aria-live="polite"></p>
+        </form>
+    </main>
+
+    <script src="assets/js/preferences.js" defer></script>
+</body>
+
+</html>

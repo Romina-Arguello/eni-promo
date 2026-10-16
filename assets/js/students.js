@@ -105,20 +105,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
       console.error(error);
     });
+// Mode d'affichage enregistré ou valeur par défaut
+  const savedView = localStorage.getItem("view") === "grid"
+    ? "grid"
+    : "list";
 
-  // Changement du mode d'affichage : Liste / Cartes
+  function applyView(view) {
+    studentsContainer.classList.remove(
+      "students-results__container--list",
+      "students-results__container--grid",
+    );
+
+    studentsContainer.classList.add(
+      `students-results__container--${view}`,
+    );
+
+    const selectedOption = [...viewOptions].find(
+      (option) => option.value === view,
+    );
+
+    if (selectedOption) {
+      selectedOption.checked = true;
+    }
+  }
+
+  // Restaurer le mode enregistré au chargement
+  applyView(savedView);
+
+  // Enregistrer immédiatement les changements
   viewOptions.forEach((option) => {
     option.addEventListener("change", () => {
       if (!option.checked) return;
 
-      studentsContainer.classList.remove(
-        "students-results__container--list",
-        "students-results__container--grid",
-      );
-
-      studentsContainer.classList.add(
-        `students-results__container--${option.value}`,
-      );
+      applyView(option.value);
+      localStorage.setItem("view", option.value);
     });
   });
 });
