@@ -564,7 +564,7 @@
    ======================================== */
 
 .preferences-page {
-    background-color: var(--color-white);
+    background-color: var(--color-background);
 }
 
 .preferences-page main {
@@ -576,9 +576,9 @@
 }
 
 .preferences-page h1 {
+    margin-top: 1.5rem;
     color: var(--color-primary);
     font-size: clamp(2rem, 4vw, 2.75rem);
-    margin-top: 1.5rem;
 }
 
 .preferences-page main > p {
@@ -587,50 +587,113 @@
     line-height: 1.6;
 }
 
+/* Formulaire */
+
 #preferences-form {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     gap: 2rem;
-    max-width: 600px;
+    width: 100%;
+    max-width: 850px;
     margin-top: 2rem;
 }
 
-#preferences-form fieldset {
-    width: 100%;
+/* Sections encadrées */
+
+#preferences-form .preferences-section {
+    min-width: 0;
     margin: 0;
-    padding: 0;
-    border: 0;
+    padding: 1.5rem;
+    border: 1px solid var(--color-primary);
+    border-radius: 8px;
+    background-color: var(--color-white);
 }
 
 #preferences-form legend {
-    margin-bottom: 1rem;
+    padding: 0 0.5rem;
     color: var(--color-text);
+    font-size: 1.125rem;
     font-weight: 700;
 }
 
-#preferences-form label {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    min-height: 44px;
-    margin-right: 1rem;
-    color: var(--color-text);
+/* Options sous forme de cartes */
+
+.preferences-options {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+#preferences-form .preferences-option {
+    position: relative;
+    display: block;
+    min-width: 0;
+    margin: 0;
     cursor: pointer;
 }
 
-#preferences-form input {
-    accent-color: var(--color-primary);
+.preferences-option input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: 0;
+    opacity: 0;
 }
 
-#preferences-form input:focus-visible {
-    outline: 3px solid var(--color-primary);
-    outline-offset: 3px;
+.preferences-option__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    min-height: 125px;
+    padding: 1rem;
+    border: 2px solid var(--color-primary);
+    border-radius: 8px;
+    background-color: var(--color-white);
+    color: var(--color-text);
+    font-weight: 600;
+    text-align: center;
+    box-sizing: border-box;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.preferences-option__icon {
+    font-size: 2rem;
+    line-height: 1;
+}
+
+/* Carte sélectionnée */
+
+.preferences-option input:checked + .preferences-option__content {
+    border-color: var(--color-primary);
+    background-color: var(--color-background);
+    box-shadow: inset 0 0 0 2px var(--color-primary);
+}
+
+/* Survol et navigation clavier */
+
+.preferences-option:hover .preferences-option__content {
+    border-color: var(--color-primary);
+    background-color: var(--color-background);
+}
+
+.preferences-option input:focus-visible + .preferences-option__content {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 4px;
+}
+
+/* Actions */
+
+.preferences-actions {
+    display: flex;
+    justify-content: center;
 }
 
 #preferences-form button {
     padding: 0.875rem 1.5rem;
     border: 1px solid var(--color-primary);
+    border-radius: 6px;
     background-color: var(--color-primary);
     color: var(--color-white);
     font: inherit;
@@ -644,8 +707,8 @@
 }
 
 #preferences-form button:focus-visible {
-    outline: 3px solid var(--color-primary);
-    outline-offset: 3px;
+    outline: 3px solid var(--color-accent);
+    outline-offset: 4px;
 }
 
 #preferences-feedback {
@@ -666,6 +729,19 @@
         gap: 1.5rem;
     }
 
+    #preferences-form .preferences-section {
+        padding: 1rem;
+    }
+
+    .preferences-options {
+        grid-template-columns: 1fr;
+    }
+
+    .preferences-option__content {
+        min-height: 90px;
+    }
+
+    .preferences-actions,
     #preferences-form button {
         width: 100%;
     }
