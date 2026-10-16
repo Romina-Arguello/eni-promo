@@ -2,18 +2,28 @@ document.addEventListener("DOMContentLoaded", () => {
   const modal = document.getElementById("student-modal");
   const closeButton = document.getElementById("student-modal-close");
   const modalTitle = document.getElementById("student-modal-title");
+  const modalAvatar = document.getElementById("student-modal-avatar");
   const modalCity = document.getElementById("student-modal-city");
   const modalAnecdote = document.getElementById("student-modal-anecdote");
 
   let activeButton = null;
 
-  document.getElementById("students-container").addEventListener("click", async (event) => {
-    const button = event.target.closest(".student-card__button");
+  document;
+  document.addEventListener("click", async (event) => {
+    const button = event.target.closest(
+      ".student-card__button, .student-map-popup__button",
+    );
 
     if (!button) return;
 
-    const card = button.closest(".student-card");
-    const studentId = Number(card.dataset.studentId);
+    let studentId;
+
+    if (button.matches(".student-card__button")) {
+      const card = button.closest(".student-card");
+      studentId = Number(card.dataset.studentId);
+    } else {
+      studentId = Number(button.dataset.studentId);
+    }
 
     try {
       const students = await loadStudents();
@@ -22,6 +32,14 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!student) return;
 
       modalTitle.textContent = `${student.nom} ${student.prenom}`;
+      const defaultAvatar = "assets/images/avatars/default.svg";
+
+      modalAvatar.src = student.avatar || defaultAvatar;
+      modalAvatar.onerror = () => {
+        if (!modalAvatar.src.endsWith("/default.svg")) {
+          modalAvatar.src = defaultAvatar;
+        }
+      };
       modalCity.textContent = `Ville : ${student.ville}`;
       modalAnecdote.textContent = `Anecdote : ${student.anecdotes}`;
 

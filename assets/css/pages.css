@@ -393,7 +393,17 @@
     border-radius: 0;
     background-color: var(--color-white);
 }
+.student-card__avatar {
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+    object-fit: contain;
+}
 
+.students-results__container--list .student-card__content {
+    flex: 1;
+    min-width: 0;
+}
 .student-card[hidden] {
   display: none;
 }
@@ -453,6 +463,15 @@
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 1.5rem;
+}
+/* Présentation centrée des apprenants en mode Cartes */
+.students-results__container--grid .student-card__avatar {
+    align-self: center;
+}
+
+.students-results__container--grid .student-card__content {
+    width: 100%;
+    text-align: center;
 }
 
 .students-results__container--grid .student-card {
@@ -517,6 +536,19 @@
   margin-top: 1.5rem;
   line-height: 1.6;
 }
+/* Avatar affiché dans la fenêtre de profil */
+.student-modal__avatar {
+    display: block;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 1.5rem;
+    object-fit: contain;
+}
+/* Centrage des informations du profil */
+.student-modal__content {
+    text-align: center;
+}
+
 
 /* ========================================
    PAGE APPRENANTS — RESPONSIVE MOBILE
@@ -525,20 +557,26 @@
 @media (max-width: 600px) {
   .students-page main {
     padding: 1.5rem 1rem;
-        /* Barre de résultats et mode d'affichage */
+  }
 
-    .students-toolbar {
-        padding: 1rem;
-    }
+  /* Barre de résultats et mode d'affichage */
+  .students-toolbar {
+    padding: 1rem;
+    flex-direction: column;
+    align-items: stretch;
+  }
 
-    .students-toolbar .students-controls__view {
-        flex-wrap: wrap;
-    }
+  .students-toolbar .students-controls__view {
+    flex-wrap: wrap;
+  }
 
-    .students-toolbar .students-controls__view legend {
-        float: none;
-        margin-bottom: 0.5rem;
-    }
+  .students-toolbar .students-controls__view legend {
+    float: none;
+    margin-bottom: 0.5rem;
+  }
+
+  .students-toolbar__count {
+    text-align: left;
   }
 
   /* Filtres */
@@ -550,15 +588,6 @@
   .students-controls__filters {
     grid-template-columns: 1fr;
     gap: 1rem;
-  }
-
-  .students-toolbar {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .students-toolbar__count {
-    text-align: left;
   }
 
   .students-controls__search,
@@ -622,6 +651,80 @@
   height: 550px;
   margin-top: 2rem;
   border: 1px solid #d1d5db;
+}
+/* Marqueur de localisation personnalisé */
+.student-map-marker {
+    box-sizing: border-box;
+    position: relative;
+    width: 36px;
+    height: 44px;
+    background-color: var(--color-primary);
+    clip-path: polygon(
+        50% 100%,
+        12% 52%,
+        5% 35%,
+        8% 20%,
+        20% 8%,
+        35% 2%,
+        65% 2%,
+        80% 8%,
+        92% 20%,
+        95% 35%,
+        88% 52%
+    );
+    filter: drop-shadow(0 2px 3px rgb(0 0 0 / 20%));
+}
+
+.student-map-marker__avatar {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: var(--color-white);
+    object-fit: contain;
+}
+/* Fenêtre d'information d'un apprenant sur la carte */
+.student-map-popup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 150px;
+    text-align: center;
+}
+/* Bouton de consultation du profil depuis la carte */
+.student-map-popup__button {
+    width: 100%;
+    margin-top: 0.5rem;
+    padding: 0.6rem 1rem;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--color-primary);
+    color: #ffffff;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.student-map-popup__button:hover {
+    filter: brightness(1.15);
+}
+
+.student-map-popup__button:focus-visible {
+    outline: 3px solid #f59e0b;
+    outline-offset: 3px;
+}
+
+.student-map-popup__avatar {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+}
+
+.student-map-popup p {
+    margin: 0;
 }
 
 @media (max-width: 600px) {
