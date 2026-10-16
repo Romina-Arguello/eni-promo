@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Découvrez ENI-Promo et des ressources utiles pour apprendre le développement web.">
+    <title>Informations | ENI-Promo</title>
+
+    <script src="assets/js/theme.js"></script>
+
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/pages.css">
+</head>
+
+<body class="information-page">
+
+    <header class="site-header">
+        <a href="index.html" class="site-header__brand">
+            <img src="assets/images/logo-eni.png" alt="" class="site-header__logo">
+            <span>ENI-Promo</span>
+        </a>
+
+        <nav class="site-nav" aria-label="Navigation principale">
+            <ul class="site-nav__list">
+                <li><a href="students.html">Apprenants</a></li>
+                <li><a href="preferences.html">Préférences</a></li>
+                <li><a href="map.html">Carte</a></li>
+                <li><a href="information.html" aria-current="page">Informations</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <nav class="breadcrumb" aria-label="Fil d'Ariane">
+            <ol class="breadcrumb__list">
+                <li class="breadcrumb__item">
+                    <a href="index.html">Accueil</a>
+                </li>
+                <li class="breadcrumb__item">
+                    <a href="students.html">Apprenants</a>
+                </li>
+                <li class="breadcrumb__item" aria-current="page">
+                    Informations
+                </li>
+            </ol>
+        </nav>
+
+        <h1>Informations</h1>
+
+        <section class="information-intro" aria-labelledby="information-about-title">
+            <h2 id="information-about-title">À propos d'ENI-Promo</h2>
+            <p>
+                ENI-Promo est une application web permettant de découvrir
+                les apprenants d'une promotion, de consulter leurs profils
+                et de visualiser leur répartition géographique.
+            </p>
+            <p>
+                Elle propose également des préférences d'affichage
+                personnalisables pour améliorer l'expérience utilisateur.
+            </p>
+        </section>
+
+        <section class="information-resources" aria-labelledby="information-resources-title">
+            <h2 id="information-resources-title">Ressources pédagogiques</h2>
+            <p>Quelques ressources pour approfondir vos connaissances en développement web.</p>
+
+            <div class="information-resources__grid">
+                <article class="information-resource">
+                    <h3>MDN Web Docs</h3>
+                    <p>Documentation et guides pour apprendre HTML, CSS et JavaScript.</p>
+                    <a href="https://developer.mozilla.org/fr/"
+                       target="_blank" rel="noopener noreferrer">
+                        Consulter MDN Web Docs (nouvel onglet)
+                    </a>
+                </article>
+
+                <article class="information-resource">
+                    <h3>W3C WAI</h3>
+                    <p>Recommandations et ressources pour améliorer l'accessibilité des sites web.</p>
+                    <a href="https://www.w3.org/WAI/"
+                       target="_blank" rel="noopener noreferrer">
+                        Consulter W3C WAI (nouvel onglet)
+                    </a>
+                </article>
+
+                <article class="information-resource">
+                    <h3>JavaScript.info</h3>
+                    <p>Cours et explications pour approfondir la programmation JavaScript.</p>
+                    <a href="https://javascript.info/"
+                       target="_blank" rel="noopener noreferrer">
+                        Consulter JavaScript.info (nouvel onglet)
+                    </a>
+                </article>
+            </div>
+        </section>
+    </main>
+
+</body>
+
+</html>
