@@ -21,6 +21,14 @@ document.addEventListener("DOMContentLoaded", () => {
         const content = document.createElement("div");
         content.className = "student-card__content";
 
+        const avatar = document.createElement("img");
+        avatar.className = "student-card__avatar";
+        avatar.src = student.avatar;
+        avatar.alt = "";
+        avatar.width = 80;
+        avatar.height = 80;
+        avatar.loading = "lazy";
+
         const name = document.createElement("h2");
         name.className = "student-card__name";
         name.textContent = `${student.nom} ${student.prenom}`;
@@ -35,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
         button.textContent = "Voir le profil";
 
         content.append(name, city);
-        card.append(content, button);
+        card.append(avatar, content, button);
         studentsContainer.append(card);
       });
 

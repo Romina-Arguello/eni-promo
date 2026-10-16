@@ -55,6 +55,24 @@
             <div id="students-map" class="students-map" aria-label="Carte interactive des villes des apprenants"></div>
         </section>
     </main>
+    <dialog id="student-modal" class="student-modal" aria-labelledby="student-modal-title">
+        <div class="student-modal__header">
+            <h2 id="student-modal-title"></h2>
+
+            <button type="button" id="student-modal-close" class="student-modal__close" aria-label="Fermer le profil">
+                &times;
+            </button>
+        </div>
+
+        <div class="student-modal__content">
+            <img id="student-modal-avatar" class="student-modal__avatar" src="assets/images/avatars/default.svg" alt=""
+                width="120" height="120">
+
+            <p id="student-modal-city"></p>
+            <p id="student-modal-anecdote"></p>
+        </div>
+    </dialog>
+
 
     <!-- Bibliothèque Leaflet -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
@@ -63,6 +81,8 @@
     <!-- Scripts du projet -->
     <script src="assets/js/data.js" defer></script>
     <script src="assets/js/map.js" defer></script>
+    <script src="assets/js/modal.js" defer></script>
+
 
 </body>
 
