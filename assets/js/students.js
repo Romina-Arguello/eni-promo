@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const searchInput = document.getElementById("student-search");
   const citySelect = document.getElementById("student-city");
   const sortSelect = document.getElementById("student-sort");
+  const studentsCount = document.getElementById("students-count");
 
   // Chargement des apprenants depuis le fichier JSON
   loadStudents()
@@ -51,11 +52,13 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       // Recherche dynamique et filtrage par ville
+
       function filterStudents() {
         const searchTerm = searchInput.value.trim().toLowerCase();
         const selectedCity = citySelect.value;
 
         const cards = studentsContainer.querySelectorAll(".student-card");
+        let visibleCount = 0;
 
         cards.forEach((card) => {
           const studentName = card
@@ -70,13 +73,24 @@ document.addEventListener("DOMContentLoaded", () => {
           const matchesCity =
             selectedCity === "" || studentCity === selectedCity;
 
-          card.hidden = !(matchesName && matchesCity);
+          const isVisible = matchesName && matchesCity;
+          card.hidden = !isVisible;
+
+          if (isVisible) {
+            visibleCount++;
+          }
         });
+
+        studentsCount.textContent =
+          visibleCount === 0
+            ? "Aucun apprenant trouvé"
+            : `${visibleCount} apprenant${visibleCount > 1 ? "s" : ""}`;
       }
 
       // Événements des filtres
       searchInput.addEventListener("input", filterStudents);
       citySelect.addEventListener("change", filterStudents);
+      filterStudents();
 
       function sortStudents() {
         const direction = sortSelect.value;
@@ -105,10 +119,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       console.error(error);
     });
-// Mode d'affichage enregistré ou valeur par défaut
-  const savedView = localStorage.getItem("view") === "grid"
-    ? "grid"
-    : "list";
+  // Mode d'affichage enregistré ou valeur par défaut
+  const savedView = localStorage.getItem("view") === "grid" ? "grid" : "list";
 
   function applyView(view) {
     studentsContainer.classList.remove(
@@ -116,9 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "students-results__container--grid",
     );
 
-    studentsContainer.classList.add(
-      `students-results__container--${view}`,
-    );
+    studentsContainer.classList.add(`students-results__container--${view}`);
 
     const selectedOption = [...viewOptions].find(
       (option) => option.value === view,
