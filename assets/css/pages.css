@@ -7,11 +7,33 @@
     min-height: 100svh;
     display: flex;
     flex-direction: column;
+
     background-color: var(--color-primary);
-    background-image: url("../images/hero-background.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 100% 100%;
+    background-image:
+        linear-gradient(
+            120deg,
+            var(--color-primary) 0%,
+            var(--color-secondary) 45%,
+            var(--color-accent) 100%
+        );
+}
+
+/* Dégradé spécifique au thème sombre */
+:root[data-theme="dark"] .home-page {
+    background-color: #0f172a;
+    background-image: linear-gradient(
+        120deg,
+        #0f172a 0%,
+        #172554 45%,
+        #312e81 100%
+    );
+}
+
+/* Textes blancs sur le dégradé sombre */
+:root[data-theme="dark"] .home-page .site-header__brand,
+:root[data-theme="dark"] .hero__title,
+:root[data-theme="dark"] .hero__description {
+    color: #ffffff;
 }
 
 .hero {
@@ -48,14 +70,32 @@
 
 .hero__button {
     display: inline-block;
-    padding: 1rem 1.5rem;
+    padding: 1rem 1.75rem;
     margin-top: 1rem;
 
-    background-color: var(--color-accent);
-    color: var(--color-text);
+    background-color: #ffffff;
+    color: #13528e;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 700;
     border-radius: 0.5rem;
+
+    transition: background-color 0.2s ease,
+                transform 0.2s ease;
+}
+
+.hero__button:hover {
+    background-color: #eaf2f9;
+    transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero__button {
+        transition: none;
+    }
+
+    .hero__button:hover {
+        transform: none;
+    }
 }
 
 .hero__button:focus-visible {
@@ -71,8 +111,14 @@
 .home-page .hero {
     flex: 1;
 }
+
 .home-page .site-header__brand {
     color: var(--color-white);
+}
+
+/* En-tête transparent sur la page d'accueil */
+.home-page .site-header {
+    background-color: transparent;
 }
 
 
@@ -100,10 +146,6 @@
 
     .hero__description {
         font-size: 1rem;
-    }
-
-    .home-page {
-    background-image: none;
     }
 }
 
