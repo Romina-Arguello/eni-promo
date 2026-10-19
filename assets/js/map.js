@@ -13,13 +13,11 @@ document.addEventListener("DOMContentLoaded", () => {
       const usedCoordinates = new Map();
 
       students.forEach((student) => {
-        const latitude = Number(student.coordonnees.latitude);
-        const longitude = Number(student.coordonnees.longitude);
-
-        if (!Number.isFinite(latitude) || !Number.isFinite(longitude)) {
+        if (!hasValidCoordinates(student.coordonnees)) {
           return;
         }
 
+        const { latitude, longitude } = student.coordonnees;
         const coordinateKey = `${latitude},${longitude}`;
 
         const duplicateIndex = usedCoordinates.get(coordinateKey) || 0;
