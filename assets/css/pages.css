@@ -420,6 +420,13 @@
     opacity: 1;
 }
 
+/* Lisibilité des champs de recherche en thème sombre */
+:root[data-theme="dark"] .students-controls__search input::placeholder,
+:root[data-theme="dark"] .students-controls__city select,
+:root[data-theme="dark"] .students-controls__sort select {
+    color: #cbd5e1;
+}
+
 /* ========================================
    PAGE DES APPRENANTS — FICHE EN LISTE
    ======================================== */
@@ -432,9 +439,33 @@
     gap: 1rem;
     padding: 1.5rem;
     border: 1px solid #d1d5db;
-    border-radius: 0;
+    border-radius: 10px;
     background-color: var(--color-white);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+
+/* Bordures des fiches en thème sombre */
+:root[data-theme="dark"] .student-card {
+    border-color: #475569;
+}
+
+/* Effet de survol des fiches */
+.student-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgb(0 0 0 / 12%);
+}
+
+/* Désactiver le mouvement si l'utilisateur le demande */
+@media (prefers-reduced-motion: reduce) {
+    .student-card {
+        transition: none;
+    }
+
+    .student-card:hover {
+        transform: none;
+    }
+}
+
 .student-card__avatar {
     width: 80px;
     height: 80px;
@@ -462,6 +493,12 @@
     color: #6b7280;
     font-size: 0.95rem;
 }
+
+/* Lisibilité des villes en thème sombre */
+:root[data-theme="dark"] .student-card__city {
+    color: #cbd5e1;
+}
+
 /* ========================================
    PAGE DES APPRENANTS — BOUTON PROFIL
    ======================================== */
@@ -469,21 +506,29 @@
 .student-card__button {
     padding: 0.75rem 1.25rem;
     border: 1px solid var(--color-primary);
-    border-radius: 0;
+    border-radius: 8px;
     background-color: var(--color-primary);
     color: var(--color-white);
     font: inherit;
     font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-            color 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-            border-color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    transition:
+        background-color 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease;
 }
 
 .student-card__button:hover {
     background-color: #eaf2f9;
     color: var(--color-primary);
     border-color: var(--color-primary);
+}
+
+/* Contraste du bouton au survol en thème sombre */
+:root[data-theme="dark"] .student-card__button:hover {
+    background-color: #eaf2f9;
+    color: #13528e;
+    border-color: #93c5fd;
 }
 
 .student-card__button:focus-visible {
