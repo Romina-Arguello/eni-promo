@@ -13,6 +13,15 @@
     background-color: var(--color-primary);
 }
 
+/* En-tête adapté au thème sombre */
+:root[data-theme="dark"] .site-header {
+    background-color: var(--color-dark-blue);
+}
+
+:root[data-theme="dark"] .site-header__brand {
+    color: #ffffff;
+}
+
 .site-header__brand {
     display: inline-flex;
     align-items: center;
@@ -97,22 +106,58 @@
 }
 
 .site-nav a {
-    color: var(--color-white);
-    font-weight: 500;
+    color: #ffffff;
+    font-weight: 700;
+    text-transform: uppercase;
     text-decoration: none;
 }
 
-.site-nav a:hover {
-    color: var(--color-accent);
+/* Animation des liens de navigation */
+
+.site-nav a {
+    position: relative;
+    display: inline-block;
 }
 
+.site-nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+
+    width: 75%;
+    height: 2px;
+
+    background-color: #ffffff;
+
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+/* Survol, focus clavier et page active */
+
+.site-nav a:hover::after,
+.site-nav a:focus-visible::after,
+.site-nav a[aria-current="page"]::after {
+    transform: scaleX(1);
+}
+
+.site-nav a:hover,
 .site-nav a[aria-current="page"] {
-    color: var(--color-accent);
-    font-weight: 700;
+    color: #ffffff;
 }
 
 .site-nav a:focus-visible {
-    outline: 2px solid var(--color-accent);
-    outline-offset: 4px;
+    outline: 2px solid #ffffff;
+    outline-offset: 8px;
+}
+
+/* Respect des préférences de mouvement */
+
+@media (prefers-reduced-motion: reduce) {
+    .site-nav a::after {
+        transition: none;
+    }
 }
 
