@@ -167,12 +167,16 @@
 
 .site-footer {
     padding: 1.5rem 1rem;
-    background-color: var(--color-dark-blue);
+    background-color: var(--color-primary);
     color: #ffffff;
     font-weight: bold;
     text-align: center;
 }
 
+/* Footer adapté au thème sombre */
+:root[data-theme="dark"] .site-footer {
+    background-color: var(--color-dark-blue);
+}
 .site-footer__text {
     margin: 0;
     font-size: 0.875rem;
