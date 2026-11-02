@@ -116,11 +116,11 @@
     color: var(--color-white);
 }
 
-/* En-tête transparent sur la page d'accueil */
-.home-page .site-header {
+/* En-tête transparent sur l'accueil, dans les deux thèmes */
+.home-page .site-header,
+:root[data-theme="dark"] .home-page .site-header {
     background-color: transparent;
 }
-
 
 /* ========================================
    PAGE D'ACCUEIL — VERSION MOBILE
