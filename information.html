@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="assets/css/components.css">
     <link rel="stylesheet" href="assets/css/pages.css">
 </head>
-
+<script src="assets/js/navigation.js" defer></script>
 <body class="information-page">
 
     <header class="site-header">
@@ -23,7 +23,12 @@
             <span>ENI-Promo</span>
         </a>
 
-        <nav class="site-nav" aria-label="Navigation principale">
+        <button class="site-nav__toggle" type="button" aria-label="Ouvrir le menu de navigation" aria-expanded="false"
+            aria-controls="main-navigation">
+            <span aria-hidden="true">☰</span>
+        </button>
+
+       <nav id="main-navigation" class="site-nav" aria-label="Navigation principale">
             <ul class="site-nav__list">
                 <li><a href="students.html">Apprenants</a></li>
                 <li><a href="preferences.html">Préférences</a></li>
