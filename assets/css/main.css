@@ -44,3 +44,15 @@ body {
     color: var(--color-text);
     background-color: var(--color-background);
 }
+
+/* Mise en page : footer en bas de l'écran */
+
+body:not(.home-page) {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+body:not(.home-page) > main {
+    flex: 1;
+}
