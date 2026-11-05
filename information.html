@@ -13,8 +13,11 @@
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/components.css">
     <link rel="stylesheet" href="assets/css/pages.css">
+
+    <script src="assets/js/data.js" defer></script>
+    <script src="assets/js/information.js" defer></script>
+    <script src="assets/js/navigation.js" defer></script>
 </head>
-<script src="assets/js/navigation.js" defer></script>
 <body class="information-page">
 
     <header class="site-header">
@@ -54,6 +57,27 @@
         </nav>
 
         <h1>Informations</h1>
+
+        <section class="information-general" aria-labelledby="information-general-title">
+            <h2 id="information-general-title">Informations générales</h2>
+
+            <dl class="information-general__list">
+                <div class="information-general__item">
+                    <dt>Promotion</dt>
+                    <dd id="promo-name">Chargement…</dd>
+                </div>
+                <div class="information-general__item">
+                    <dt>Période de formation</dt>
+                    <dd id="promo-period">Chargement…</dd>
+                </div>
+                <div class="information-general__item">
+                    <dt>Nombre d'apprenants</dt>
+                    <dd id="promo-count">Chargement…</dd>
+                </div>
+            </dl>
+
+            <p id="promo-description" class="information-general__description"></p>
+        </section>
 
         <section class="information-intro" aria-labelledby="information-about-title">
             <h2 id="information-about-title">À propos d'ENI-Promo</h2>
