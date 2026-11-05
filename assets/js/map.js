@@ -55,6 +55,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const marker = L.marker([displayLatitude, displayLongitude], {
           icon: customIcon,
+          // Accessible name of the marker (role="button" set by Leaflet)
+          title: `${student.nom} ${student.prenom}, ${student.ville}`,
         }).addTo(map);
 
         const popup = document.createElement("div");
