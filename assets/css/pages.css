@@ -1119,3 +1119,43 @@
         grid-template-columns: 1fr;
     }
 }
+
+/* Informations générales de la promotion */
+.information-general {
+    margin-top: 2.5rem;
+}
+
+.information-general__list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+    margin: 1.5rem 0 0;
+}
+
+.information-general__item {
+    padding: 1.5rem;
+    border: 1px solid var(--color-primary);
+    background-color: var(--color-background);
+}
+
+.information-general__item dt {
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+.information-general__item dd {
+    margin: 0.5rem 0 0;
+    color: var(--color-text);
+}
+
+.information-general__description {
+    margin-top: 1.5rem;
+    color: var(--color-text);
+    line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+    .information-general__list {
+        grid-template-columns: 1fr;
+    }
+}
